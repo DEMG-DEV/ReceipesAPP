@@ -4,4 +4,26 @@ This app is to store a bunch of recipes i want to create, will have a lot of cha
 
 This app is created in Flask an uses PostgreSQL to store all the data.
 
-## Version 0.0.3
+## Actual Version 0.0.4
+
+### Version 0.0.5
+
+- Added SQLAlchemy support and file for initializing database
+
+### Version 0.0.4
+
+- Added use of Blueprints to organize project.
+
+### Version 0.0.3
+
+- Added use of instance folder.
+- Added detailed changes in version.
+
+### Version 0.0.2
+
+- Added initial unit test file.
+
+### Version 0.0.1
+
+- Projecto base.
+- Added version.
