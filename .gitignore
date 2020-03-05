@@ -8,3 +8,8 @@ __pycache__/
 
 # VS Code files
 .vscode/
+
+# virtual environment
+.venv/
+
+venv/
