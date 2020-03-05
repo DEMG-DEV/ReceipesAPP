@@ -4,7 +4,7 @@ This app is to store a bunch of recipes i want to create, will have a lot of cha
 
 This app is created in Flask an uses PostgreSQL to store all the data.
 
-## Actual Version 0.0.4
+## Actual Version 0.0.5
 
 ### Version 0.0.5
 
