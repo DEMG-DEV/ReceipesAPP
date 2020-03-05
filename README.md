@@ -1,6 +1,10 @@
 # Receipes APP
 
-## Version 0.0.3 > Actual
+## Actual Version 0.0.4
+
+### Version 0.0.4
+
+- Added use of Blueprints to organize project.
 
 ### Version 0.0.3
 
