@@ -2,6 +2,10 @@
 
 ## Actual Version 0.0.4
 
+### Version 0.0.5
+
+- Added SQLAlchemy support and file for initializing database
+
 ### Version 0.0.4
 
 - Added use of Blueprints to organize project.
