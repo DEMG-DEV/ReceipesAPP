@@ -10,6 +10,7 @@ __pycache__/
 .vscode/
 
 # virtual environment
-.venv/
-
 venv/
+
+# Instance Folde - used for configuration parameters
+instance/
