@@ -22,7 +22,7 @@ class RecipesTests(unittest.TestCase):
             os.path.join(app.config['BASEDIR'], TEST_DB)
         self.app = app.test_client()
         db.create_all()
- 
+
         self.assertEquals(app.debug, False)
 
     # executed after each test
@@ -41,15 +41,13 @@ class RecipesTests(unittest.TestCase):
     def test_main_page(self):
         response = self.app.get('/', follow_redirects=True)
         self.assertIn(b'Family Recipes', response.data)
-        self.assertIn(b'Breakfast Recipes', response.data)
-        self.assertIn(b'Lunch Recipes', response.data)
-        self.assertIn(b'Dinner Recipes', response.data)
-        self.assertIn(b'Dessert Recipes', response.data)
+        self.assertIn(b'Register', response.data)
+        self.assertIn(b'Log In', response.data)
 
     def test_main_page_query_results(self):
         response = self.app.get('/add', follow_redirects=True)
         self.assertIn(b'Add a New Recipe', response.data)
- 
+
     def test_add_recipe(self):
         response = self.app.post(
             '/add',
@@ -57,7 +55,7 @@ class RecipesTests(unittest.TestCase):
                       recipe_description='Delicious hamburger with pretzel rolls'),
             follow_redirects=True)
         self.assertIn(b'New recipe, Hamburgers, added!', response.data)
- 
+
     def test_add_invalid_recipe(self):
         response = self.app.post(
             '/add',
