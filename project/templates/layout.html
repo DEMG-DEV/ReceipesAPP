@@ -9,46 +9,43 @@
     <meta name="author" content="David Mendez Guardado">
     <title>Family Recipe App</title>
     <!-- styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap-4.4.1-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
 <body>
 
     <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
 
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#recipes-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('recipes.index') }}">Family Recipes</a>
-            </div>
+            <a class="navbar-brand" href="{{ url_for('recipes.index') }}">Family Recipes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="recipes-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
                     {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('recipes.index') }}">Public Recipes</a></li>
-                        <li><a href="{{ url_for('recipes.add_recipe') }}">Add Recipe</a></li>
-                        <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('recipes.index') }}">Public
+                                Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('recipes.add_recipe') }}">Add
+                                Recipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('users.logout') }}">Log Out</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('users.register') }}">Register</a></li>
-                        <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('users.register') }}">Register</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('users.login') }}">Log In</a></li>
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
-                        <li><a href="#">Welcome, {{current_user.email}}!</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Welcome, {{current_user.email}}!</a></li>
                     {% else %}
-                        <li><a href="#">Welcome!</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Welcome!</a></li>
                     {% endif %}
 
                 </ul>
@@ -78,15 +75,13 @@
         </div>
         <div class="footer">
             <hr>
-            <p>LSCA David Mendez Guardado - 2020</p>
+            <p>&copy; LSCA David Mendez Guardado - 2020</p>
         </div>
     </div><!-- /.container -->
 
     <!-- scripts -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
-    </script>
+    <script src="{{ url_for('static', filename='lib/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

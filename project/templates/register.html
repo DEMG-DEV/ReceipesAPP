@@ -7,13 +7,17 @@
         <h2>Please Register Your New Account</h2>
     </div>
     <form action="{{ url_for('users.register') }}" method="post">
-        {{ form.csrf_token }}
-        <dl>
-            {{ render_field(form.email, placeholder="Email address") }}
-            {{ render_field(form.password, placeholder="Password") }}
-            {{ render_field(form.confirm, placeholder="Confirm password") }}
-        </dl>
-        <button class="btn btn-sm btn-success" type="submit">Create New Account</button>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form.csrf_token }}
+                <dl>
+                    {{ render_field(form.email, class="form-control",  placeholder="Email address") }}
+                    {{ render_field(form.password, class="form-control",  placeholder="Password") }}
+                    {{ render_field(form.confirm, class="form-control",  placeholder="Confirm password") }}
+                </dl>
+                <button class="btn btn-primary" type="submit">Create New Account</button>
+            </div>
+        </div>
     </form>
 </div>
 

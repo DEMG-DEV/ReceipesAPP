@@ -9,12 +9,16 @@
     </div>
 
     <form action="{{ url_for('recipes.add_recipe') }}" method="post">
-        {{ form.csrf_token }}
-        <dl>
-            {{ render_field(form.recipe_title, placeholder="Enter Recipe Title") }}
-            {{ render_field(form.recipe_description, placeholder="Enter Recipe Description") }}
-        </dl>
-        <button class="btn btn-sm btn-success" type="submit">Add Recipe</button>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form.csrf_token }}
+                <dl>
+                    {{ render_field(form.recipe_title, class="form-control",  placeholder="Enter Recipe Title") }}
+                    {{ render_field(form.recipe_description, class="form-control",  placeholder="Enter Recipe Description") }}
+                </dl>
+                <button class="btn btn-primary" type="submit">Add Recipe</button>
+            </div>
+        </div>
     </form>
 </div>
 
