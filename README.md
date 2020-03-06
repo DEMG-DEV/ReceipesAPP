@@ -4,7 +4,15 @@ This app is to store a bunch of recipes i want to make, will have a lot of chang
 
 This app is created in Flask an uses PostgreSQL to store all the data.
 
-## Actual Version 0.0.9
+## Actual Version 0.0.11
+
+### Version 0.0.11
+
+* Added password hashing
+
+### Version 0.0.10
+
+* Change the Theme and some visual styles.
 
 ### Version 0.0.9
 
