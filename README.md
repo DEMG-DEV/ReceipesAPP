@@ -8,7 +8,7 @@ This app is created in Flask an uses PostgreSQL to store all the data.
 
 ### Version 0.0.12
 
-*Added sending emails
+* Added sending emails
 
 ### Version 0.0.11
 
