@@ -3,7 +3,7 @@
 import os
 import unittest
 
-from project import app, db
+from project import app, db, mail
 
 TEST_DB = 'user.db'
 
@@ -25,6 +25,7 @@ class UsersTests(unittest.TestCase):
         db.drop_all()
         db.create_all()
 
+        mail.init_app(app)
         self.assertEquals(app.debug, False)
 
     # executed after each test
@@ -61,22 +62,22 @@ class UsersTests(unittest.TestCase):
     def test_valid_user_registration(self):
         self.app.get('/register', follow_redirects=True)
         response = self.register(
-            "demg.nahe@outlook.com", "FlaskIsAwesome", "FlaskIsAwesome")
+            "demg.nahe@gmail.com", "FlaskIsAwesome", "FlaskIsAwesome")
         self.assertIn(b'Thanks for registering!', response.data)
 
     def test_duplicate_email_user_registration_error(self):
         self.app.get('/register', follow_redirects=True)
-        self.register('demg.nahe@outlook.com',
+        self.register('demg.nahe@gmail.com',
                       'FlaskIsAwesome', 'FlaskIsAwesome')
         self.app.get('/register', follow_redirects=True)
-        response = self.register('demg.nahe@outlook.com',
+        response = self.register('demg.nahe@gmail.com',
                                  'FlaskIsReallyAwesome', 'FlaskIsReallyAwesome')
         self.assertIn(
-            b'ERROR! Email (demg.nahe@outlook.com) already exists.', response.data)
+            b'ERROR! Email (demg.nahe@gmail.com) already exists.', response.data)
 
     def test_missing_field_user_registration_error(self):
         self.app.get('/register', follow_redirects=True)
-        response = self.register('demg.nahe@outlook.com', 'FlaskIsAwesome', '')
+        response = self.register('demg.nahe@gmail.com', 'FlaskIsAwesome', '')
         self.assertIn(b'This field is required.', response.data)
 
     def test_login_form_displays(self):
@@ -86,23 +87,23 @@ class UsersTests(unittest.TestCase):
 
     def test_valid_login(self):
         self.app.get('/register', follow_redirects=True)
-        self.register('demg.nahe@outlook.com',
+        self.register('demg.nahe@gmail.com',
                       'FlaskIsAwesome', 'FlaskIsAwesome')
         self.app.get('/login', follow_redirects=True)
-        response = self.login('demg.nahe@outlook.com', 'FlaskIsAwesome')
-        self.assertIn(b'Welcome, demg.nahe@outlook.com!', response.data)
+        response = self.login('demg.nahe@gmail.com', 'FlaskIsAwesome')
+        self.assertIn(b'Welcome, demg.nahe@gmail.com!', response.data)
 
     def test_login_without_registering(self):
         self.app.get('/login', follow_redirects=True)
-        response = self.login('demg.nahe@outlook.com', 'FlaskIsAwesome')
+        response = self.login('demg.nahe@gmail.com', 'FlaskIsAwesome')
         self.assertIn(b'ERROR! Incorrect login credentials.', response.data)
 
     def test_valid_logout(self):
         self.app.get('/register', follow_redirects=True)
-        self.register('demg.nahe@outlook.com',
+        self.register('demg.nahe@gmail.com',
                       'FlaskIsAwesome', 'FlaskIsAwesome')
         self.app.get('/login', follow_redirects=True)
-        self.login('demg.nahe@outlook.com', 'FlaskIsAwesome')
+        self.login('demg.nahe@gmail.com', 'FlaskIsAwesome')
         response = self.app.get('/logout', follow_redirects=True)
         self.assertIn(b'Goodbye!', response.data)
 
